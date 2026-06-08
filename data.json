@@ -530,7 +530,7 @@
       "mom_4_6m": -5.85,
       "mom_7_12m": -0.45,
       "mom_over1y": 0.29,
-      "note": "- 악화 : 위해범우 +66,  소주보가몽 +25, 위해범우 +17, 강소진합 +9  등\n- 위험 : 일조코넥, 항력발동 등"
+      "note": "- 악화 : 위해범우 +66,  소주보가몽 +25, 위해범우 +17, 강소진합 +9  등 / - 위험 : 일조코넥, 항력발동 등"
     },
     {
       "name": "SYTK",
@@ -636,7 +636,7 @@
       "mom_4_6m": 2.18,
       "mom_7_12m": -1.35,
       "mom_over1y": -1.51,
-      "note": "- 악화 : KND +57, Tech Oil +42, KHANG DUY PHÁT + 41, M&C +39 등\n- 위험 : 서진그룹, Texon, M&C, DSP 등"
+      "note": "- 악화 : KND +57, Tech Oil +42, KHANG DUY PHÁT + 41, M&C +39 등 / - 위험 : 서진그룹, Texon, M&C, DSP 등"
     },
     {
       "name": "YBI",
@@ -689,7 +689,7 @@
       "mom_4_6m": -0.14,
       "mom_7_12m": 0.06,
       "mom_over1y": 0.01,
-      "note": "- 악화 : Sultan +42, Amber +24, Intelii +14, Aprocool +20, ASM +9\n           Focus +4 등\n- 위험 : C J POLYTECH, Intelii, CNH 등"
+      "note": "- 악화 : Sultan +42, Amber +24, Intelii +14, Aprocool +20, ASM +9 / Focus +4 등 / - 위험 : C J POLYTECH, Intelii, CNH 등"
     },
     {
       "name": "BWI",
@@ -742,7 +742,7 @@
       "mom_4_6m": 0.04,
       "mom_7_12m": -0.07,
       "mom_over1y": 0.0,
-      "note": "- 악화 : Win + 95, JY + 24,  SSK +18, YOOWON +6, KTI +6 등\n- 위험 : Skyline, Tongil, Mugunghwa, TUNGGAL 등"
+      "note": "- 악화 : Win + 95, JY + 24,  SSK +18, YOOWON +6, KTI +6 등 / - 위험 : Skyline, Tongil, Mugunghwa, TUNGGAL 등"
     },
     {
       "name": "BWA",
@@ -795,7 +795,7 @@
       "mom_4_6m": -1.1,
       "mom_7_12m": 0.01,
       "mom_over1y": 0.0,
-      "note": "- 악화 : DYP +14, YSM +3, KIXX + 2 등\n- 위험 : INTERMEX"
+      "note": "- 악화 : DYP +14, YSM +3, KIXX + 2 등 / - 위험 : INTERMEX"
     },
     {
       "name": "BWA USA",
@@ -954,7 +954,7 @@
       "mom_4_6m": -0.17,
       "mom_7_12m": -0.01,
       "mom_over1y": 0.0,
-      "note": "- 악화 : 오케이쿨텍 + 4, 오일테크 +  2 , 동원시스템 +2 등\n- 위험 : 동원시스템"
+      "note": "- 악화 : 오케이쿨텍 + 4, 오일테크 +  2 , 동원시스템 +2 등 / - 위험 : 동원시스템"
     },
     {
       "name": "범우화인켐",
@@ -1007,7 +1007,7 @@
       "mom_4_6m": -0.18,
       "mom_7_12m": 0.0,
       "mom_over1y": 0.0,
-      "note": "- 악화 : 범우화학공업㈜호남 +23, 세풍코리아 +16, 엘케이네스트 +4\n셰플러 + 3 등"
+      "note": "- 악화 : 범우화학공업㈜호남 +23, 세풍코리아 +16, 엘케이네스트 +4 / 셰플러 + 3 등"
     }
   ]
 }
