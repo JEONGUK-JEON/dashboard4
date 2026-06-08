@@ -63,7 +63,6 @@ button, input { font-family: inherit; }
   display: inline-block; padding: 5px 10px; border-radius: 999px;
   background: #eef4ff; color: #265fe3; font-size: 11px; font-weight: 800; letter-spacing: .06em;
 }
-.unit-note { font-size: 11px; color: #94a3b8; }
 .hero-meta {
   background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
   padding: 12px 16px; box-shadow: var(--shadow); text-align: right; min-width: 112px;
@@ -76,27 +75,49 @@ button, input { font-family: inherit; }
   background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow);
 }
 
-/* ── 필터 ── */
+/* ── 필터 패널 ── */
 .filter-panel { padding: 14px 16px 12px; margin-bottom: 12px; }
-.filter-layout { display: grid; grid-template-columns: minmax(0, 1.95fr) 300px; gap: 16px; align-items: start; }
+
+/* 매출 대시보드와 동일: 좌측 넓게, 우측 선택정보 고정폭 */
+.filter-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.95fr) 300px;
+  gap: 16px;
+  align-items: start;
+}
+
 .filter-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px; }
 .filter-header h2, .panel-header h2 { margin: 0; font-size: 17px; }
 .filter-header p, .panel-header p { margin: 4px 0 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+
+/* 선택 법인 정보 (우측 aside) */
 .filter-summary {
   background: var(--surface-soft); border: 1px solid var(--line); border-radius: 16px;
-  padding: 14px 14px 10px; min-height: 100%;
+  padding: 14px 14px 10px;
 }
 .filter-summary-header h3 { margin: 0; font-size: 17px; }
 .filter-summary-header p { margin: 5px 0 10px; color: var(--muted); font-size: 12px; }
 
-/* 법인 버튼 */
+/* ── 법인 버튼 ── */
 .entity-buttons { display: flex; flex-direction: column; gap: 8px; }
+
+/* 1행: 연합 총계 + 그룹 버튼 */
 .entity-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* 하위 법인 행: 레이블 + 버튼들 */
 .entity-subgroup {
-  display: grid; grid-template-columns: 62px 1fr; gap: 10px; align-items: start;
-  padding-top: 8px; border-top: 1px solid #edf2f7;
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding-top: 8px;
+  border-top: 1px solid #edf2f7;
 }
-.entity-group-label { font-size: 12px; font-weight: 800; color: #5a6f91; padding-top: 8px; }
+.entity-group-label {
+  font-size: 12px; font-weight: 800; color: #5a6f91; padding-top: 8px;
+}
+
+/* 버튼 기본 */
 .entity-btn {
   border: 1px solid #d8e1ef; background: #fbfdff; color: #40526e;
   padding: 8px 12px; border-radius: 999px; font-size: 12px; font-weight: 700;
@@ -107,6 +128,7 @@ button, input { font-family: inherit; }
   background: linear-gradient(135deg, #2f6bff, #5f8cff); color: #fff;
   border-color: transparent; box-shadow: 0 8px 18px rgba(47, 107, 255, .2);
 }
+/* 연합 총계 버튼 */
 .entity-btn.total-btn { background: #0f172a; color: #fff; border-color: #0f172a; }
 .entity-btn.total-btn.active { background: linear-gradient(135deg, #111827, #334155); }
 
@@ -117,23 +139,21 @@ button, input { font-family: inherit; }
   color: #7c4d00; line-height: 1.7; white-space: pre-line;
 }
 
-/* ── KPI 그리드 ── */
+/* ── KPI ── */
 .kpi-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; }
 .kpi-card { padding: 14px 16px 12px; position: relative; overflow: hidden; min-height: 118px; }
-.kpi-card::before {
-  content: ''; position: absolute; left: 0; top: 0; right: 0; height: 4px; background: #dbe7ff;
-}
-.kpi-card.accent-blue::before  { background: var(--blue); }
-.kpi-card.accent-sky::before   { background: var(--sky); }
-.kpi-card.accent-teal::before  { background: var(--teal); }
+.kpi-card::before { content: ''; position: absolute; left: 0; top: 0; right: 0; height: 4px; background: #dbe7ff; }
+.kpi-card.accent-blue::before   { background: var(--blue); }
+.kpi-card.accent-sky::before    { background: var(--sky); }
+.kpi-card.accent-teal::before   { background: var(--teal); }
 .kpi-card.accent-orange::before { background: var(--orange); }
-.kpi-card.accent-red::before   { background: var(--red); }
+.kpi-card.accent-red::before    { background: var(--red); }
 .kpi-card.accent-violet::before { background: var(--violet); }
 .kpi-label { font-size: 12px; color: #5f7391; font-weight: 700; margin-bottom: 8px; }
 .kpi-value { font-size: 26px; font-weight: 800; letter-spacing: -.03em; color: #0f172a; line-height: 1.08; }
-.kpi-sub { margin-top: 8px; color: var(--muted); font-size: 11px; }
 .kpi-value.up   { color: #e53935; }
 .kpi-value.down { color: #1565c0; }
+.kpi-sub { margin-top: 8px; color: var(--muted); font-size: 11px; }
 
 /* ── 메인 그리드 ── */
 .main-grid { display: grid; grid-template-columns: minmax(0, 1.72fr) minmax(320px, .88fr); gap: 12px; align-items: start; }
@@ -142,8 +162,7 @@ button, input { font-family: inherit; }
 .panel-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
 .unit-badge {
   display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px;
-  border-radius: 999px; background: #eef8f6; color: #107c6f;
-  font-size: 11px; font-weight: 800; white-space: nowrap;
+  border-radius: 999px; background: #eef8f6; color: #107c6f; font-size: 11px; font-weight: 800; white-space: nowrap;
 }
 .chart-wrap { height: 300px; }
 .chart-wrap.tall { height: 360px; }
@@ -152,7 +171,7 @@ button, input { font-family: inherit; }
 .lower-panel { margin-top: 8px; }
 .side-panels { display: flex; flex-direction: column; gap: 12px; }
 
-/* ── 테이블 ── */
+/* ── 상세 리스트 ── */
 .detail-list { display: grid; gap: 10px; }
 .compact-detail { gap: 6px; }
 .detail-item {
@@ -162,6 +181,8 @@ button, input { font-family: inherit; }
 .detail-item:last-child { border-bottom: 0; }
 .detail-item span { color: var(--muted); font-size: 12px; }
 .detail-item strong { font-size: 13px; }
+
+/* ── 테이블 ── */
 .table-wrap { max-height: 230px; overflow: auto; border-top: 1px solid #eef2f7; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 8px 6px; text-align: right; font-size: 11px; }
@@ -174,13 +195,13 @@ tbody tr { border-bottom: 1px solid #eef2f7; }
 tbody tr:hover { background: #f9fbff; }
 canvas { max-width: 100%; }
 
-/* ── Streamlit 연동 ── */
+/* ── 컨트롤 버튼 ── */
 .hero-controls { display: flex; gap: 8px; margin-top: 10px; justify-content: flex-end; }
 .control-btn {
   border: 1px solid var(--line); background: var(--surface); color: var(--text);
   padding: 8px 12px; border-radius: 10px; font-size: 12px; font-weight: 700;
-  cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 6px;
-  box-shadow: var(--shadow);
+  cursor: pointer; transition: all 0.2s ease;
+  display: inline-flex; align-items: center; gap: 6px; box-shadow: var(--shadow);
 }
 .control-btn:hover { background: #f1f5f9; transform: translateY(-1px); }
 .logout-btn { border-color: #fca5a5; color: #dc2626; background: #fff5f5; }

@@ -46,39 +46,60 @@ function getGroupEntities() {
 }
 
 // ── 버튼 구성 ──
-const GROUP_LABELS = {
-  '국내법인': '국내법인',
-  '해외법인': '해외법인',
-  '판매사': '판매사',
-};
+// 매출 대시보드와 동일한 레이아웃:
+//   1행: [연합 총계] [국내법인] [해외법인] [판매사]   ← 그룹/총계 버튼
+//   이하: 국내법인 | BWC BW BEX KCC ...
+//         해외법인 | BWK SYTK VBC ...
+//         판매사   | 범우케미칼 범우켐 범우화인켐
+
+// 그룹 합계 엔티티 이름 → 표시 레이블 매핑
+const GROUP_BTN_MAP = [
+  { entity: '범우연합 합계', label: '연합 총계', extraClass: 'total-btn' },
+  { entity: '국내사 합계',   label: '국내법인', extraClass: '' },
+  { entity: '해외사 합계',   label: '해외법인', extraClass: '' },
+  { entity: '판매사 합계',   label: '판매사',   extraClass: '' },
+];
 
 function buildEntityButtons() {
   const container = document.getElementById('entityButtons');
   container.innerHTML = '';
 
-  // 상단: 전체 + 그룹 합계
+  // ── 1행: 총계 + 그룹 버튼 ──
   const topRow = document.createElement('div');
   topRow.className = 'entity-row';
-  getGroupEntities().forEach(e => {
-    const btn = makeBtn(e.name, e.group === '합계' ? 'total-btn' : '');
+  GROUP_BTN_MAP.forEach(({ entity, label, extraClass }) => {
+    if (!findEntity(entity)) return;
+    const btn = document.createElement('button');
+    btn.className = 'entity-btn' + (extraClass ? ' ' + extraClass : '');
+    btn.textContent = label;
+    btn.dataset.entity = entity;
+    btn.addEventListener('click', () => selectEntity(entity));
     topRow.appendChild(btn);
   });
   container.appendChild(topRow);
 
-  // 하위 법인 그룹별
-  ['국내법인', '해외법인', '판매사'].forEach(groupName => {
+  // ── 하위 법인 그룹별 행 ──
+  [
+    { groupName: '국내법인', label: '국내법인' },
+    { groupName: '해외법인', label: '해외법인' },
+    { groupName: '판매사',   label: '판매사'   },
+  ].forEach(({ groupName, label }) => {
     const leaves = getLeafEntities().filter(e => e.group === groupName);
     if (!leaves.length) return;
+
     const wrap = document.createElement('div');
     wrap.className = 'entity-subgroup';
-    const label = document.createElement('div');
-    label.className = 'entity-group-label';
-    label.textContent = GROUP_LABELS[groupName] || groupName;
-    wrap.appendChild(label);
+
+    const labelEl = document.createElement('div');
+    labelEl.className = 'entity-group-label';
+    labelEl.textContent = label;
+    wrap.appendChild(labelEl);
+
     const row = document.createElement('div');
     row.className = 'entity-row';
     leaves.forEach(e => row.appendChild(makeBtn(e.name)));
     wrap.appendChild(row);
+
     container.appendChild(wrap);
   });
 }
@@ -120,8 +141,13 @@ function renderKpis(entity) {
   }
   setText('kpiMoMDetail', `전월대비 / 전년대비 ${fmtChg(entity.yoy_total)}`);
 
-  setText('selectedEntityName', entity.name);
-  setText('selectedEntityGroup', entity.group);
+  // 총계/그룹 합계 표시명 정리
+  const displayName = {
+    '범우연합 합계': '연합 총계', '국내사 합계': '국내법인 합계',
+    '해외사 합계': '해외법인 합계', '판매사 합계': '판매사 합계'
+  }[entity.name] || entity.name;
+  setText('selectedEntityName', displayName);
+  setText('selectedEntityGroup', entity.group === '합계' ? '전체' : entity.group);
   setText('selectedMonth', '2026-04');
   setText('selectedTotal', fmtEok(tot));
   setText('latestMonthLabel', '2026-04');
